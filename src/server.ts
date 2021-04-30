@@ -1,10 +1,11 @@
 import express from "express";
+import "./database"; // index.ts
 
 const app = express();
 
 /* 
 
-* Methods - HTTP
+Methods - HTTP
 
 -> GET = Search
 -> POST = Create
