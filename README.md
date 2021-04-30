@@ -1,6 +1,5 @@
 # My files from Next Level Week
 ## Next Level Week 05 - NodeJS
-___
 ### Aula 01 - Criação do Projeto
 * Yarn
 * Node
