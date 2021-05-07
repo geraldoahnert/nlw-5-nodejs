@@ -17,12 +17,10 @@ io.on("connect", (socket) => {
 
         if (!userExists) {
             const user = await usersService.create(email);
-
             await connectionsService.create({
                 socket_id,
                 user_id: user.id,
             });
-
             user_id = user.id;
         } else {
             user_id = userExists.id;
@@ -40,11 +38,10 @@ io.on("connect", (socket) => {
                 connection.socket_id = socket_id;
                 await connectionsService.create(connection);
             }
-
-            await messagesService.create({
-                text,
-                user_id,
-            });
         }
+        await messagesService.create({
+            text,
+            user_id,
+        });
     });
 });
