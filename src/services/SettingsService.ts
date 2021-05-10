@@ -16,12 +16,12 @@ class SettingsService {
 
     async create({ chat, username }: ISettingsCreate) {
         // Select = from settings where username = 'username' limit 1;
-        const userAlredyExists = await this.settingsRepository.findOne({
+        const userAlreadyExists = await this.settingsRepository.findOne({
             username,
         });
 
-        if (userAlredyExists) {
-            throw new Error("User alredy exists.");
+        if (userAlreadyExists) {
+            throw new Error("User already exists.");
         }
 
         const settings = this.settingsRepository.create({
@@ -42,7 +42,7 @@ class SettingsService {
     }
 
     async update(username: string, chat: boolean) {
-        const settings = await this.settingsRepository
+        await this.settingsRepository
             .createQueryBuilder()
             .update(Setting)
             .set({ chat })

@@ -1,4 +1,4 @@
-document.querySelector("#start_chat").addEventListener("click", (event) => {
+document.querySelector("#start_chat").addEventListener("click", () => {
     const socket = io();
 
     const chat_help = document.getElementById("chat_help");
@@ -16,12 +16,15 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
             text,
         };
 
-        socket.emit("client_first_acess", params, (call, err) => {
+        socket.emit("client_first_access", params, (call, err) => {
             if (err) {
                 console.err(err);
             } else {
                 console.log(call);
             }
         });
+    });
+    socket.on("client_list_all_messages", (messages) => {
+        console.log("messages", messages);
     });
 });
