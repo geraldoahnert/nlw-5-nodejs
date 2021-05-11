@@ -25,10 +25,11 @@ document.querySelector("#start_chat").addEventListener("click", () => {
         });
     });
     socket.on("client_list_all_messages", (messages) => {
-        var template_client = document.getElementById("message-user-template")
-            .innerHTML;
-        var template_admin = document.getElementById("admin-template")
-            .innerHTML;
+        var template_client = document.getElementById(
+            "message-user-template"
+        ).innerHTML;
+        var template_admin =
+            document.getElementById("admin-template").innerHTML;
 
         messages.forEach((message) => {
             if (message.admin_id == null) {
@@ -44,5 +45,9 @@ document.querySelector("#start_chat").addEventListener("click", () => {
                 document.getElementById("messages").innerHTML += rendered;
             }
         });
+    });
+
+    socket.on("admin_send_to_client", (message) => {
+        console.log(message);
     });
 });
