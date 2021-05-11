@@ -71,4 +71,16 @@ function sendMessage(id) {
     };
 
     socket.emit("admin_send_message", params);
+
+    const divMessages = document.getElementById(`allMessages${id}`);
+    const createDiv = document.createElement("div");
+    createDiv.className = "admin_message_admin";
+
+    createDiv.innerHTML = `Clerk: <span>${params.text} - ${message.text} </span>`;
+    createDiv.innerHTML += `<span class="admin_date>${dayjs().format(
+        "DD/MM/YYYY HH:mm:ss"
+    )}`;
+    divMessages.appendChild(createDiv);
+
+    text.value = "";
 }
