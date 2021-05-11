@@ -84,3 +84,6 @@ function sendMessage(id) {
 
     text.value = "";
 }
+socket.on("admin_receive_message", (data) => {
+    console.log(data);
+});
